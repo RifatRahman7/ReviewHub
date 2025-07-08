@@ -18,7 +18,7 @@ const partners = [
 
 const PartnersSection = () => {
   return (
-    <section className="w-full py-12 px-4 bg-gradient-to-br from-green-950 via-black to-green-950 text-white roboto backdrop-blur-md">
+    <section className="w-full py-12 px-4 bg-gradient-to-br from-green-800 via-black to-green-800 text-white roboto backdrop-blur-md">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-5xl font-bold mb-6">Meet Our Partners</h2>
         <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
