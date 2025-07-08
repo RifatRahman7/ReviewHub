@@ -23,13 +23,13 @@ const Navbar = () => {
             alt="ReviewHub Logo"
             className="w-10 h-10 rounded-full"
           />
-          <span className="text-white text-2xl font-bold tracking-wide">
+          <span className="text-white roboto text-2xl font-bold tracking-wide">
             Review<span className="text-green-400">Hub</span>
           </span>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6 text-white">
+        <div className="hidden roboto font-bold md:flex items-center gap-6 text-white">
           {navLinks.map(link => (
             <a
               key={link.name}
