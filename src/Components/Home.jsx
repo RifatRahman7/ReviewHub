@@ -1,7 +1,9 @@
 import Banner from './Banner';
+import HowItWorks from './HowItWorks';
 import Navbar from './Navbar';
 import PartnersSection from './PartnersSection';
 import Register from './Register';
+import WhyChooseUs from './WhyChooseUs';
 
 const Home = () => {
     return (
@@ -9,6 +11,8 @@ const Home = () => {
            <Navbar></Navbar>
            <Banner></Banner>
            <PartnersSection></PartnersSection>
+           <WhyChooseUs></WhyChooseUs>
+           <HowItWorks></HowItWorks>
         </div>
     );
 };
