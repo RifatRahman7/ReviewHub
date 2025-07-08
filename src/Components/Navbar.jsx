@@ -44,8 +44,8 @@ const Navbar = () => {
             alt="User Avatar"
             className="w-8 h-8 rounded-full border-2 border-green-500"
           />
-          <button className="ml-3 px-4 py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
-            Logout
+          <button className="ml-3 btn px-4 py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+           Register
           </button>
         </div>
 
@@ -75,8 +75,8 @@ const Navbar = () => {
               alt="User Avatar"
               className="w-8 h-8 rounded-full border-2 border-green-500"
             />
-            <button className="px-4 py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
-              Logout
+            <button className="px-4 btn py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+             Register
             </button>
           </div>
         </div>

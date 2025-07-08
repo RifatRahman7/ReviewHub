@@ -1,4 +1,5 @@
 import Banner from './Banner';
+import Footer from './Footer';
 import HowItWorks from './HowItWorks';
 import Navbar from './Navbar';
 import PartnersSection from './PartnersSection';
@@ -13,6 +14,7 @@ const Home = () => {
            <PartnersSection></PartnersSection>
            <WhyChooseUs></WhyChooseUs>
            <HowItWorks></HowItWorks>
+           <Footer></Footer>
         </div>
     );
 };
