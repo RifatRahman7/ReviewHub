@@ -1,9 +1,10 @@
-import React from 'react';
+import Navbar from './Navbar';
+import Register from './Register';
 
 const Home = () => {
     return (
         <div>
-            <h1>HOME</h1>
+           <Navbar></Navbar>
         </div>
     );
 };
