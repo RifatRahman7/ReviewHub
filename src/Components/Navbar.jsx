@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // optional, you can use any icons
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +17,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         
         {/* Logo */}
-        <div className="text-white text-2xl font-bold tracking-wide">
-          Review<span className="text-green-400">Hub</span>
+        <div className="flex items-center gap-2">
+          <img
+            src="https://i.ibb.co/B2H1nRkq/review-hub.png"
+            alt="ReviewHub Logo"
+            className="w-10 h-10 rounded-full"
+          />
+          <span className="text-white text-2xl font-bold tracking-wide">
+            Review<span className="text-green-400">Hub</span>
+          </span>
         </div>
 
         {/* Desktop Menu */}
@@ -33,7 +40,7 @@ const Navbar = () => {
             </a>
           ))}
           <img
-            src="/avatar.jpg" // replace with user image if dynamic
+            src="/avatar.jpg"
             alt="User Avatar"
             className="w-8 h-8 rounded-full border-2 border-green-500"
           />
