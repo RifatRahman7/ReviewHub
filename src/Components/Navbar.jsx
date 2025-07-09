@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -12,6 +13,30 @@ const Navbar = () => {
         { name: 'My Services', path: '/my-services' },
         { name: 'My Reviews', path: '/my-reviews' },
     ];
+
+    const currentPath = location.pathname;
+    const isRegisterPage = currentPath === '/register';
+    const isLoginPage = currentPath === '/login';
+
+    const authButton = isRegisterPage ? (
+        <Link to="/login">
+            <button className="px-4 btn py-1 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+                Login
+            </button>
+        </Link>
+    ) : isLoginPage ? (
+        <Link to="/register">
+            <button className="px-4 btn py-1 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+                Register
+            </button>
+        </Link>
+    ) : (
+        <Link to="/register">
+            <button className="px-4 btn py-1 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+                Register
+            </button>
+        </Link>
+    );
 
     return (
         <nav className="w-full fixed z-50 bg-gradient-to-r from-green-900 via-black to-green-900 bg-opacity-60 backdrop-blur-md shadow-md">
@@ -43,11 +68,7 @@ const Navbar = () => {
                         alt="User Avatar"
                         className="w-8 h-8 rounded-full border-2 border-green-500"
                     />
-                    <Link to="/register">
-                        <button className="px-4 btn py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
-                            Register
-                        </button>
-                    </Link>
+                    {authButton}
                 </div>
 
                 <div className="md:hidden flex items-center">
@@ -74,11 +95,7 @@ const Navbar = () => {
                             alt="User Avatar"
                             className="w-8 h-8 rounded-full border-2 border-green-500"
                         />
-                        <Link to="/register">
-                            <button className="px-4 btn py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
-                                Register
-                            </button>
-                        </Link>
+                        {authButton}
                     </div>
                 </div>
             )}
