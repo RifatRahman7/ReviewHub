@@ -44,10 +44,10 @@ const Navbar = () => {
                         className="w-8 h-8 rounded-full border-2 border-green-500"
                     />
                     <Link to="/register">
-                            <button className="px-4 btn py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
-                                Register
-                            </button>
-                        </Link>
+                        <button className="px-4 btn py-1 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+                            Register
+                        </button>
+                    </Link>
                 </div>
 
                 <div className="md:hidden flex items-center">
