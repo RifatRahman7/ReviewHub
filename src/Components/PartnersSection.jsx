@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const partners = [
   {
     name: "ServiceScout",
@@ -20,15 +22,32 @@ const PartnersSection = () => {
   return (
     <section className="w-full py-12 px-4 bg-gradient-to-br from-green-800 via-black to-green-800 text-white roboto backdrop-blur-md">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-5xl font-bold mb-6">Meet Our Partners</h2>
-        <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-5xl font-bold mb-6"
+        >
+          Meet Our Partners
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto"
+        >
           Our trusted partners help us keep ReviewHub secure, reliable, and accurate for all users.
-        </p>
-
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {partners.map((partner, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
+              viewport={{ once: true }}
               className="bg-black/50 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-green-600 transition duration-300"
             >
               <div className="flex justify-center mb-4">
@@ -40,7 +59,7 @@ const PartnersSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-green-400">{partner.name}</h3>
               <p className="text-gray-300 text-sm">{partner.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

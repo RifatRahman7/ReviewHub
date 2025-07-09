@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
@@ -27,35 +29,58 @@ const Banner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000);
-
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="w-full h-[80vh] relative overflow-hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
-            index === current ? 'opacity-100 z-20' : 'opacity-0 z-10'
-          }`}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute top-0 left-0 w-full h-full"
         >
           <img
-            src={slide.image}
-            alt={slide.title}
+            src={slides[current].image}
+            alt={slides[current].title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col justify-center items-center roboto text-center px-4">
-            <h2 className="text-5xl md:text-6xl text-green-600 roboto font-bold drop-shadow-lg">
-              {slide.title}
-            </h2>
-            <p className="text-xl md:text-2xl text-green-200 max-w-2xl mt-4 drop-shadow-md">
-              {slide.description}
-            </p>
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col justify-center items-center text-center px-4">
+            <motion.h2
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-5xl md:text-6xl text-green-600 font-bold drop-shadow-lg"
+            >
+              {slides[current].title}
+            </motion.h2>
+            <motion.p
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-xl md:text-2xl text-green-200 max-w-2xl mt-4 drop-shadow-md"
+            >
+              {slides[current].description}
+            </motion.p>
+            <motion.div
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+            >
+              <Link
+                to="/register"
+                className="mt-6 inline-block px-6 py-3 bg-green-800 roboto hover:bg-green-600 text-white rounded-full font-semibold shadow-md transition"
+              >
+                Get Started
+              </Link>
+            </motion.div>
           </div>
-        </div>
-      ))}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
