@@ -33,14 +33,14 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full btn text-lg bg-green-700 hover:bg-green-600 transition rounded-full py-3 text-white font-semibold mb-4"
+            className="w-full btn text-lg border-green-900 bg-green-700 hover:bg-green-600 transition rounded-full py-3 text-white font-semibold mb-4"
           >
             Login
           </button>
 
           <button
             type="button"
-            className="w-full btn text-lg bg-white text-black hover:bg-gray-200 transition rounded-full py-3 font-semibold flex items-center justify-center gap-2"
+            className="w-full btn text-lg bg-white text-black hover:bg-gray-300 transition rounded-full py-3 font-semibold flex items-center justify-center gap-2"
           >
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"

@@ -20,19 +20,19 @@ const Navbar = () => {
 
     const authButton = isRegisterPage ? (
         <Link to="/login">
-            <button className="px-4 btn py-1 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+            <button className="px-4 btn py-1 text-lg border-green-900 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
                 Login
             </button>
         </Link>
     ) : isLoginPage ? (
         <Link to="/register">
-            <button className="px-4 btn py-1 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+            <button className="px-4 btn py-1 text-lg bg-green-700 border-green-900 hover:bg-green-600 rounded-full text-white transition-all">
                 Register
             </button>
         </Link>
     ) : (
         <Link to="/register">
-            <button className="px-4 btn py-1 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+            <button className="px-4 btn py-1 border-green-900 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
                 Register
             </button>
         </Link>
@@ -55,13 +55,15 @@ const Navbar = () => {
 
                 <div className="hidden roboto font-bold md:flex items-center gap-6 text-white">
                     {navLinks.map(link => (
-                        <a
+                        <Link
                             key={link.name}
-                            href={link.path}
-                            className="hover:text-green-400 transition-colors duration-200"
+                            to={link.path}
+                            className={`hover:text-green-400 transition-colors duration-200 ${
+                                currentPath === link.path ? 'text-green-400' : ''
+                            }`}
                         >
                             {link.name}
-                        </a>
+                        </Link>
                     ))}
                     <img
                         src="/avatar.jpg"
@@ -79,15 +81,17 @@ const Navbar = () => {
             </div>
 
             {isOpen && (
-                <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pt-4 pb-6 space-y-4">
+                <div className="md:hidden roboto bg-black bg-opacity-90 text-white px-4 pt-4 pb-6 space-y-4">
                     {navLinks.map(link => (
-                        <a
+                        <Link
                             key={link.name}
-                            href={link.path}
-                            className="block hover:text-green-400"
+                            to={link.path}
+                            className={`block hover:text-green-400 ${
+                                currentPath === link.path ? 'text-green-400' : ''
+                            }`}
                         >
                             {link.name}
-                        </a>
+                        </Link>
                     ))}
                     <div className="flex items-center gap-4 mt-4">
                         <img
