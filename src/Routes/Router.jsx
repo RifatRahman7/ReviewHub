@@ -5,6 +5,7 @@ import Register from "../Components/Register";
 import Login from "../Components/Login";
 import ErrorPage from "../Components/ErrorPage";
 import AddService from "../Components/AddService";
+import PrivateRoute from "../Provider/PrivateRoute";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
             },
             {
                 path:"/add-service",
-                element:<AddService />
+                Component:()=>(
+                    <PrivateRoute>
+                        <AddService />
+                    </PrivateRoute>
+                )
             }
         ]
     },

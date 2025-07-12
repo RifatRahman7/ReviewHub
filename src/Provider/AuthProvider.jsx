@@ -1,5 +1,3 @@
-// src/Provider/AuthProvider.jsx
-
 import React, { useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
