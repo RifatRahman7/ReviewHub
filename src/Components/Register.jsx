@@ -27,7 +27,7 @@ const Register = () => {
               type="email"
               name="email"
               className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
-              placeholder="you@example.com"
+              placeholder="Enter your e-mail..."
             />
           </label>
 

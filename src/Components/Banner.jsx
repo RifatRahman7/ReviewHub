@@ -34,7 +34,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="w-full h-[80vh] relative overflow-hidden">
+    <div className="w-full roboto h-[80vh] relative overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
