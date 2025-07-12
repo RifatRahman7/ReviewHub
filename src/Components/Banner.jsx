@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AuthContext } from '../Provider/AuthContext';
 
 const slides = [
   {
@@ -25,6 +26,7 @@ const slides = [
 
 const Banner = () => {
   const [current, setCurrent] = useState(0);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,18 +68,20 @@ const Banner = () => {
             >
               {slides[current].description}
             </motion.p>
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-            >
-              <Link
-                to="/register"
-                className="mt-6 inline-block px-6 py-3 bg-green-800 roboto hover:bg-green-600 text-white rounded-full font-semibold shadow-md transition"
+            {!user && (
+              <motion.div
+                initial={{ y: 60, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
               >
-                Get Started
-              </Link>
-            </motion.div>
+                <Link
+                  to="/register"
+                  className="mt-6 inline-block px-6 py-3 bg-green-800 roboto hover:bg-green-600 text-white rounded-full font-semibold shadow-md transition"
+                >
+                  Get Started
+                </Link>
+              </motion.div>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>
