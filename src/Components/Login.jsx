@@ -51,7 +51,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-900 to-black">
-      <Helmet><title>Login</title></Helmet>
       <ToastContainer theme="colored" />
       <Navbar />
 
@@ -97,14 +96,15 @@ const Login = () => {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full btn text-lg bg-white text-black hover:bg-gray-300 transition rounded-full py-3 font-semibold flex items-center justify-center gap-2"
+            className="w-full mt-4 flex btn items-center justify-center gap-3 border border-green-600 hover:border-green-400 text-white rounded-full py-3 transition bg-black bg-opacity-50"
           >
             <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              className="w-5 h-5"
+              src="https://i.ibb.co/5xMMFjjG/Google-G-logo-svg.png"
+              alt="Google logo"
+              className="w-6 h-6"
             />
-            Continue with Google
+            <span className="text-red-400 text-lg font-medium">Login with</span>
+            <span className="text-green-400 text-lg font-medium">Google</span>
           </button>
 
           <p className="mt-6 text-center text-green-300">

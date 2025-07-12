@@ -3,7 +3,6 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 
-
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
@@ -85,11 +84,13 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
-                    <img
-                        src={user?.photoURL || '/avatar.jpg'}
-                        alt="User Avatar"
-                        className="w-8 h-8 rounded-full border-2 border-green-500"
-                    />
+                    {user && (
+                        <img
+                            src={user?.photoURL || '/avatar.jpg'}
+                            alt="User Avatar"
+                            className="w-8 h-8 rounded-full border-2 border-green-500"
+                        />
+                    )}
                     {authButton}
                 </div>
 
@@ -115,11 +116,13 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <div className="flex items-center gap-4 mt-4">
-                        <img
-                            src={user?.photoURL || '/avatar.jpg'}
-                            alt="User Avatar"
-                            className="w-8 h-8 rounded-full border-2 border-green-500"
-                        />
+                        {user && (
+                            <img
+                                src={user?.photoURL || '/avatar.jpg'}
+                                alt="User Avatar"
+                                className="w-8 h-8 rounded-full border-2 border-green-500"
+                            />
+                        )}
                         {user ? (
                             <button
                                 onClick={() => {

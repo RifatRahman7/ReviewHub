@@ -22,7 +22,6 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // Validation
     if (name.length < 5) {
       setNameError('Name should be more than 5 characters');
       return;
@@ -38,7 +37,6 @@ const Register = () => {
       setPasswordError('');
     }
 
-    // Firebase register
     createUser(email, password)
       .then((result) => {
         const newUser = result.user;
@@ -66,7 +64,6 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
-      <Helmet><title>Register</title></Helmet>
       <ToastContainer theme="colored" />
       <Navbar />
 
@@ -137,8 +134,8 @@ const Register = () => {
               alt="Google logo"
               className="w-6 h-6"
             />
-            <span className="text-red-400 font-medium">Login with</span>
-            <span className="text-green-400 font-medium">Google</span>
+            <span className="text-red-400 text-lg font-medium">Login with</span>
+            <span className="text-green-400 text-lg font-medium">Google</span>
           </button>
 
           <p className="mt-6 text-center text-green-300">
