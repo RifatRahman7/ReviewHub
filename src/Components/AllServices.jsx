@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import useAxiosPublic from '../hooks/useAxios';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Loader from './Loader';
 const AllServices = () => {
   const [services, setServices] = useState([]);
   const axiosPublic = useAxiosPublic();
@@ -23,7 +24,6 @@ const AllServices = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
       <Navbar />
-
       <div className="flex-grow px-4 py-20 max-w-7xl mx-auto">
         <h1 className="text-center text-4xl font-bold text-green-400 mb-12 roboto">All Services</h1>
 
