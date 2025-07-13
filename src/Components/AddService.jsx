@@ -1,13 +1,47 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
+import axios from 'axios';
+import { AuthContext } from '../Provider/AuthContext';
+import { toast } from 'react-toastify';
+import { useContext } from 'react';
 
 const AddService = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleAddService = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const service = {
+      image: form.image.value,
+      title: form.title.value,
+      company: form.company.value,
+      website: form.website.value,
+      category: form.category.value,
+      price: parseFloat(form.price.value),
+      description: form.description.value,
+      addedDate: new Date().toISOString(),
+      userEmail: user?.email || 'unauthenticated',
+    };
+
+    try {
+      const res = await axios.post('http://localhost:3000/services', service);
+      if (res.data.insertedId) {
+        toast.success('Service added successfully!');
+        form.reset();
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to add service.');
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-900 via-black to-green-900">
       <Navbar />
 
       <div className="flex-grow flex items-center justify-center pt-20 pb-10">
-        <form className="max-w-xl w-full bg-black bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-white roboto">
+        <form onSubmit={handleAddService} className="max-w-xl w-full bg-black bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-white roboto">
           <h2 className="text-4xl font-bold mb-8 text-green-400 text-center">Add New Service</h2>
 
           <label className="block mb-4">
