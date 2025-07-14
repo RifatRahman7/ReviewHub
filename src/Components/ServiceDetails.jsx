@@ -63,6 +63,7 @@ const ServiceDetails = () => {
         return (
             <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
                 <Navbar />
+                <h1>Add service to see!</h1>
                 <Loader />
                 <Footer />
             </div>

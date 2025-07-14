@@ -9,6 +9,7 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import AllServices from "../Components/AllServices";
 import ServiceDetails from "../Components/ServiceDetails";
 import MyServices from "../Components/MyServices";
+import MyReviews from "../Components/MyReviews";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -50,6 +51,14 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 )
             },
+            {
+                path:"/my-reviews",
+                Component:()=>(
+                    <PrivateRoute>
+                        <MyReviews />
+                    </PrivateRoute>
+                )
+            }
 
         ]
     },
