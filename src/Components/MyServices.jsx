@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { toast } from 'react-toastify';
-toast.success('Service updated');
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import useAxiosPublic from '../hooks/useAxios';
@@ -29,7 +27,7 @@ const MyServices = () => {
         const updatedService = {
             title: form.title.value,
             category: form.category.value,
-            price: parseFloat(form.price.value), // Ensure price is a number
+            price: parseFloat(form.price.value),
             description: form.description.value
         };
 

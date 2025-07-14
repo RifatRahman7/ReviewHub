@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
-import { Helmet } from 'react-helmet';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../Provider/AuthContext';
 

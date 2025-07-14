@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Loader from './Loader';
 import useAxiosPublic from '../hooks/useAxios';
 
 const AllServices = () => {

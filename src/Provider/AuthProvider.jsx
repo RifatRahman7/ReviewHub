@@ -50,9 +50,6 @@ const AuthProvider = ({ children }) => {
         });
         return () => unsubscribe();
     }, []);
-    // if (loading)
-    //     return (
-    //         <Loader></Loader>)
     const authData = {
         user,
         setUser,
