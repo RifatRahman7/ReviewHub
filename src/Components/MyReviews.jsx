@@ -102,7 +102,7 @@ const MyReviews = () => {
                         {myReviews.map(review => (
                             <div key={review._id} className="bg-black bg-opacity-50 rounded-md p-5 border border-green-800 shadow-md">
                                 <div className="mb-2 text-green-300 font-bold text-lg">
-                                    {serviceTitles[review.serviceId] || 'Loading...'}
+                                    {serviceTitles[review.serviceId] || 'Title...'}
                                 </div>
                                 <div className="mb-2 flex items-center gap-2">
                                     <span className="text-yellow-400 font-semibold">Rating:</span>

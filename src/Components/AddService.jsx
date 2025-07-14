@@ -26,7 +26,7 @@ const AddService = () => {
     };
 
     try {
-      const res = await axios.post('http://localhost:3000/services', service);
+      const res = await axios.post('https://review-hub-server-ten.vercel.app/services', service);
       if (res.data.insertedId) {
         form.reset();
 
