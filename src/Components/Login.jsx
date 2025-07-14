@@ -19,48 +19,48 @@ const Login = () => {
   const location = useLocation();
 
   const handleLogin = async (e) => {
-  e.preventDefault();
-  setErrorMsg("");
+    e.preventDefault();
+    setErrorMsg("");
 
-  try {
-    const result = await signIn(email, password);
-    const user = result.user;
-    Swal.fire({
-      title: 'Login Successful!',
-      text: `Welcome ${user?.displayName || "Back"}!`,
-      icon: 'success',
-      confirmButtonColor: '#16a34a',
-      confirmButtonText: 'OK'
-    });
-    setTimeout(() => {
-      navigate(location.state?.from || "/", { replace: true });
-    }, 500);
-  } catch (err) {
-    setErrorMsg("Invalid email or password. Please try again.");
-    toast.error("Login failed: " + err.message);
-  }
-};
+    try {
+      const result = await signIn(email, password);
+      const user = result.user;
+      Swal.fire({
+        title: 'Login Successful!',
+        text: `Welcome ${user?.displayName || "Back"}!`,
+        icon: 'success',
+        confirmButtonColor: '#16a34a',
+        confirmButtonText: 'OK'
+      });
+      setTimeout(() => {
+        navigate(location.state?.from || "/", { replace: true });
+      }, 500);
+    } catch (err) {
+      setErrorMsg("Invalid email or password. Please try again.");
+      toast.error("Login failed: " + err.message);
+    }
+  };
 
-const handleGoogleLogin = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    const result = await googleSignIn(provider);
-    const user = result.user;
-    Swal.fire({
-      title: 'Login Successful!',
-      text: `Logged in with Google as ${user?.displayName}`,
-      icon: 'success',
-      confirmButtonColor: '#16a34a',
-      confirmButtonText: 'OK'
-    });
-    setTimeout(() => {
-      navigate(location.state?.from || "/", { replace: true });
-    }, 500);
-  } catch (err) {
-    setErrorMsg("Google login failed.");
-    toast.error("Google Login Error: " + err.message);
-  }
-};
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await googleSignIn(provider);
+      const user = result.user;
+      Swal.fire({
+        title: 'Login Successful!',
+        text: `Logged in with Google as ${user?.displayName}`,
+        icon: 'success',
+        confirmButtonColor: '#16a34a',
+        confirmButtonText: 'OK'
+      });
+      setTimeout(() => {
+        navigate(location.state?.from || "/", { replace: true });
+      }, 500);
+    } catch (err) {
+      setErrorMsg("Google login failed.");
+      toast.error("Google Login Error: " + err.message);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-900 to-black">
