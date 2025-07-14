@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
 import { toast } from 'react-toastify';
 import Rating from 'react-rating';
 import useAxiosPublic from '../hooks/useAxios';
@@ -19,42 +18,44 @@ const ServiceDetails = () => {
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState(0);
 
-    // fetch service & reviews
     useEffect(() => {
         axiosPublic.get(`/services/${id}`)
             .then(res => setService(res.data))
-            .catch(err => console.error(err));
+            .catch(console.error);
+
         axiosPublic.get(`/reviews/${id}`)
             .then(res => setReviews(res.data))
-            .catch(err => console.error(err));
-    }, [axiosPublic, id]);
+            .catch(console.error);
+    }, [id, axiosPublic]);
 
     const handleAddReview = async (e) => {
         e.preventDefault();
         if (!user) {
-            toast.error('You must be logged in to post a review');
+            toast.error('Please log in to add a review');
             return;
         }
-        const newReview = {
+
+        const review = {
             serviceId: id,
             userEmail: user.email,
             userName: user.displayName || 'Anonymous',
             userPhoto: user.photoURL || '',
             text: reviewText,
             rating,
-            date: new Date().toISOString(),
+            date: new Date().toISOString()
         };
+
         try {
-            const res = await axiosPublic.post(`/reviews`, newReview);
+            const res = await axiosPublic.post('/reviews', review);
             if (res.data.insertedId) {
-                toast.success('Review posted!');
-                setReviews(prev => [...prev, newReview]);
+                toast.success('Review added!');
+                setReviews([review, ...reviews]);
                 setReviewText('');
                 setRating(0);
             }
         } catch (err) {
             console.error(err);
-            toast.error('Failed to post review');
+            toast.error('Failed to add review');
         }
     };
 
@@ -69,9 +70,9 @@ const ServiceDetails = () => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black text-white">
             <Navbar />
-            <div className="flex-grow px-4 py-16 max-w-4xl mx-auto text-white roboto">
+            <div className="flex-grow px-4 py-16 max-w-4xl mx-auto roboto">
                 <div className="bg-black bg-opacity-60 backdrop-blur-md p-6 rounded-lg mb-10">
                     <img src={service.image} alt={service.title} className="w-full h-64 object-cover rounded-md mb-4 border border-green-700" />
                     <h1 className="text-3xl font-bold text-green-300 mb-2">{service.title}</h1>
@@ -84,19 +85,30 @@ const ServiceDetails = () => {
 
                 <div className="mb-8">
                     <h2 className="text-2xl font-bold text-green-400 mb-4">Reviews ({reviews.length})</h2>
-                    {reviews.map((r, idx) => (
-                        <div key={idx} className="bg-black bg-opacity-50 backdrop-blur-md p-4 rounded-lg mb-3 flex space-x-4">
-                            <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full border-2 border-green-500" />
-                            <div>
-                                <div className="text-green-300 font-semibold">{r.userName}</div>
-                                <div className="text-yellow-400 mb-1">
-                                    <Rating initialRating={r.rating} readonly fractions={2} emptySymbol="☆" fullSymbol="★" />
+                    {reviews.map((r, idx) => {
+                        const numericRating = Number(r.rating) || 0;
+                        return (
+                            <div key={idx} className="bg-black bg-opacity-50 backdrop-blur-md p-4 rounded-lg mb-3 flex space-x-4">
+                                <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full border-2 border-green-500" />
+                                <div>
+                                    
+                                    <div className="text-green-300 font-semibold">{r.userName}</div>
+                                    <div className="text-yellow-400 mb-1">
+                                        <Rating
+                                            initialRating={numericRating}
+                                            readonly
+                                            fractions={2}
+                                            emptySymbol={<span className="text-xl">☆</span>}
+                                            fullSymbol={<span className="text-xl text-yellow-400">★</span>}
+                                        />
+                                    </div>
+                                    <div className="text-gray-300 text-sm">{r.text}</div>
+                                    <div className="text-gray-500 text-xs mt-1">{new Date(r.date).toLocaleString()}</div>
                                 </div>
-                                <div className="text-gray-300 text-sm">{r.text}</div>
-                                <div className="text-gray-500 text-xs mt-1">{new Date(r.date).toLocaleString()}</div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
+
                 </div>
 
                 {user && (
@@ -112,8 +124,13 @@ const ServiceDetails = () => {
                         />
                         <div className="flex items-center mb-4 space-x-3">
                             <span className="text-green-300">Rating:</span>
-                            <Rating initialRating={rating} onChange={rate => setRating(rate)}
-                                fractions={2} emptySymbol="☆" fullSymbol="★" className="text-yellow-400" />
+                            <Rating
+                                initialRating={rating}
+                                onChange={setRating}
+                                fractions={2}
+                                emptySymbol={<span className="text-3xl cursor-pointer">☆</span>}
+                                fullSymbol={<span className="text-3xl text-yellow-400 cursor-pointer">★</span>}
+                            />
                         </div>
                         <button
                             type="submit"
