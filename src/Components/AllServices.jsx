@@ -40,7 +40,7 @@ const AllServices = () => {
             <Navbar />
             <div className="flex-grow px-4 py-20 max-w-7xl mx-auto roboto">
                 <h1 className="text-center text-4xl font-bold text-green-400 mb-6">All Services</h1>
-
+                {/* Search bar */}
                 <div className="max-w-md mx-auto mb-12">
                     <input
                         type="text"

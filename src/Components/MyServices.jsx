@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { toast } from 'react-toastify';
+toast.success('Service updated');
+import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import useAxiosPublic from '../hooks/useAxios';
 
@@ -27,14 +29,20 @@ const MyServices = () => {
         const updatedService = {
             title: form.title.value,
             category: form.category.value,
-            price: form.price.value,
+            price: parseFloat(form.price.value), // Ensure price is a number
             description: form.description.value
         };
 
         try {
             const res = await axiosPublic.patch(`/services/${editingService._id}`, updatedService);
             if (res.data.modifiedCount > 0) {
-                toast.success('Service updated');
+                Swal.fire({
+                    title: 'Updated!',
+                    text: 'Service has been updated successfully.',
+                    icon: 'success',
+                    confirmButtonColor: '#16a34a',
+                    confirmButtonText: 'OK'
+                });
                 setEditingService(null);
                 const updated = myServices.map(s => s._id === editingService._id ? { ...s, ...updatedService } : s);
                 setMyServices(updated);
@@ -45,18 +53,23 @@ const MyServices = () => {
     };
 
     const confirmDelete = async () => {
-        try {
-            const res = await axiosPublic.delete(`/services/${deleteId}`);
-            if (res.data.deletedCount > 0) {
-                toast.success('Service deleted');
-                setMyServices(myServices.filter(s => s._id !== deleteId));
-                setShowDeleteModal(false);
-            }
-        } catch (err) {
-            toast.error('Delete failed');
+    try {
+        const res = await axiosPublic.delete(`/services/${deleteId}`);
+        if (res.data.deletedCount > 0) {
+            Swal.fire({
+                title: 'Deleted!',
+                text: 'Service has been deleted successfully.',
+                icon: 'success',
+                confirmButtonColor: '#16a34a',
+                confirmButtonText: 'OK'
+            });
+            setMyServices(myServices.filter(s => s._id !== deleteId));
+            setShowDeleteModal(false);
         }
-    };
-
+    } catch (err) {
+        toast.error('Delete failed');
+    }
+};
     return (
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black text-white">
             <Navbar />
@@ -105,7 +118,7 @@ const MyServices = () => {
                 </div>
             </div>
             {editingService && (
-                <div className="fixed inset-0 roboto flex items-center justify-center z-50 bg-black bg-opacity-70 px-4">
+                <div className="fixed inset-0 roboto flex items-center justify-center z-50 px-4">
                     <form onSubmit={handleUpdate} className="bg-gray-900 p-6 rounded-lg w-full max-w-md">
                         <h2 className="text-green-300 text-center text-2xl sm:text-3xl font-bold mb-4">Update Service</h2>
                         <input name="title" defaultValue={editingService.title} placeholder="Title"
@@ -124,7 +137,7 @@ const MyServices = () => {
                 </div>
             )}
             {showDeleteModal && (
-                <div className="fixed inset-0 roboto flex items-center justify-center z-50 bg-black bg-opacity-70 px-4">
+                <div className="fixed inset-0 roboto flex items-center justify-center z-50 px-4">
                     <div className="bg-gray-900 p-6 rounded-lg w-full max-w-md">
                         <h2 className="text-red-400 text-lg font-semibold mb-4">Are you sure you want to delete?</h2>
                         <div className="flex justify-end space-x-3">

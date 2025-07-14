@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import Swal from 'sweetalert2';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
@@ -25,6 +26,13 @@ const Navbar = () => {
     const handleLogout = async () => {
         try {
             await logOut();
+            Swal.fire({
+                title: 'Logged Out!',
+                text: 'You have been logged out successfully.',
+                icon: 'success',
+                confirmButtonColor: '#16a34a',
+                confirmButtonText: 'OK'
+            });
             navigate('/login');
         } catch (error) {
             console.error('Logout failed:', error);
@@ -77,9 +85,8 @@ const Navbar = () => {
                         <Link
                             key={link.name}
                             to={link.path}
-                            className={`hover:text-green-400 transition-colors duration-200 ${
-                                currentPath === link.path ? 'text-green-400' : ''
-                            }`}
+                            className={`hover:text-green-400 transition-colors duration-200 ${currentPath === link.path ? 'text-green-400' : ''
+                                }`}
                         >
                             {link.name}
                         </Link>
@@ -107,9 +114,8 @@ const Navbar = () => {
                         <Link
                             key={link.name}
                             to={link.path}
-                            className={`block hover:text-green-400 ${
-                                currentPath === link.path ? 'text-green-400' : ''
-                            }`}
+                            className={`block hover:text-green-400 ${currentPath === link.path ? 'text-green-400' : ''
+                                }`}
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}

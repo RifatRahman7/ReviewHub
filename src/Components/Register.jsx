@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
+import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
 import { Helmet } from 'react-helmet';
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,7 +40,13 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const newUser = result.user;
-        toast.success('Registration successful!');
+        Swal.fire({
+          title: 'Registration Successful!',
+          text: 'Your account has been created.',
+          icon: 'success',
+          confirmButtonColor: '#16a34a',
+          confirmButtonText: 'OK'
+        });
         return updateUser({ displayName: name, photoURL: photo }).then(() => {
           setUser({ ...newUser, displayName: name, photoURL: photo });
           navigate('/');

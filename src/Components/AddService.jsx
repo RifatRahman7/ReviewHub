@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
@@ -27,8 +28,15 @@ const AddService = () => {
     try {
       const res = await axios.post('http://localhost:3000/services', service);
       if (res.data.insertedId) {
-        toast.success('Service added successfully!');
         form.reset();
+
+        Swal.fire({
+          title: 'Success!',
+          text: 'Service added successfully.',
+          icon: 'success',
+          confirmButtonColor: '#16a34a',
+          confirmButtonText: 'OK'
+        });
       }
     } catch (error) {
       console.error(error);

@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { toast } from 'react-toastify';
 import Rating from 'react-rating';
+import Swal from 'sweetalert2';
 import useAxiosPublic from '../hooks/useAxios';
 import { AuthContext } from '../Provider/AuthContext';
 import Loader from './Loader';
@@ -29,35 +30,41 @@ const ServiceDetails = () => {
     }, [id, axiosPublic]);
 
     const handleAddReview = async (e) => {
-        e.preventDefault();
-        if (!user) {
-            toast.error('Please log in to add a review');
-            return;
-        }
+    e.preventDefault();
+    if (!user) {
+        toast.error('Please log in to add a review');
+        return;
+    }
 
-        const review = {
-            serviceId: id,
-            userEmail: user.email,
-            userName: user.displayName || 'Anonymous',
-            userPhoto: user.photoURL || '',
-            text: reviewText,
-            rating,
-            date: new Date().toISOString()
-        };
-
-        try {
-            const res = await axiosPublic.post('/reviews', review);
-            if (res.data.insertedId) {
-                toast.success('Review added!');
-                setReviews([review, ...reviews]);
-                setReviewText('');
-                setRating(0);
-            }
-        } catch (err) {
-            console.error(err);
-            toast.error('Failed to add review');
-        }
+    const review = {
+        serviceId: id,
+        userEmail: user.email,
+        userName: user.displayName || 'Anonymous',
+        userPhoto: user.photoURL || '',
+        text: reviewText,
+        rating,
+        date: new Date().toISOString()
     };
+
+    try {
+        const res = await axiosPublic.post('/reviews', review);
+        if (res.data.insertedId) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Review added successfully.',
+                icon: 'success',
+                confirmButtonColor: '#16a34a',
+                confirmButtonText: 'OK'
+            });
+            setReviews([review, ...reviews]);
+            setReviewText('');
+            setRating(0);
+        }
+    } catch (err) {
+        console.error(err);
+        toast.error('Failed to add review');
+    }
+};
 
     if (!service) {
         return (
