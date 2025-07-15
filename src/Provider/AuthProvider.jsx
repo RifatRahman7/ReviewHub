@@ -9,10 +9,9 @@ import {
     signOut,
     updateProfile,
 } from "firebase/auth";
-import app from "../Firebase/firebase.config";
+import app from "../Firebase/firebase.config.js";
 
 import { AuthContext } from "./AuthContext";
-import Loader from "../Components/Loader";
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {

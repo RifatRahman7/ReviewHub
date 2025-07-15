@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAuth } from 'firebase/auth';
 
 const axiosPublic = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://review-hub-server-ten.vercel.app/',
 });
 
 axiosPublic.interceptors.request.use(
