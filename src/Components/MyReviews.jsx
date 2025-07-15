@@ -100,7 +100,7 @@ const MyReviews = () => {
                 ) : (
                     <div className="space-y-6">
                         {myReviews.map(review => (
-                            <div key={review._id} className="bg-black bg-opacity-50 rounded-md p-5 border border-green-800 shadow-md">
+                            <div key={review._id} className="bg-black hover:scale-105  transition-transform duration-300 bg-opacity-50 rounded-md p-5 border border-green-800 shadow-md">
                                 <div className="mb-2 text-green-300 font-bold text-lg">
                                     {serviceTitles[review.serviceId] || 'Title...'}
                                 </div>

@@ -57,7 +57,7 @@ const AllServices = () => {
                         {filteredServices.map(service => (
                             <div
                                 key={service._id}
-                                className="bg-black bg-opacity-60 backdrop-blur-md rounded-lg overflow-hidden border border-green-800 shadow-lg text-white"
+                                className="bg-black hover:scale-105 transition-transform duration-300 bg-opacity-60 backdrop-blur-md rounded-lg overflow-hidden border border-green-800 shadow-lg text-white"
                             >
                                 <img
                                     src={service.image}
