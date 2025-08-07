@@ -39,6 +39,7 @@ ReviewHub is a full-stack MERN web application where users can explore services,
 
 
    🔧 Dependencies:
+  
    Frontend (client/package.json):
 bash
 npm install react react-dom react-router-dom axios tailwindcss daisyui firebase
