@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
+import ModeButton from './ModeButton';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,24 +11,6 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const { user, logOut } = useContext(AuthContext);
-
-    // THEME: dark mode state + persistence
-    const [theme, setTheme] = useState(() => {
-        if (typeof window === 'undefined') return 'dark';
-        const saved = localStorage.getItem('theme');
-        if (saved) return saved;
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
-    });
-
-    useEffect(() => {
-        const root = document.documentElement;
-        if (theme === 'dark') root.classList.add('dark');
-        else root.classList.remove('dark');
-        localStorage.setItem('theme', theme);
-    }, [theme]);
-
-    const toggleTheme = () => setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -60,71 +43,66 @@ const Navbar = () => {
     const authButton = user ? (
         <button
             onClick={handleLogout}
-            className="px-4 btn py-1 border-green-900 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all"
+            className="px-4 btn py-1 dark:bg-gray-800 dark:hover:bg-gray-900 border-green-900 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all"
         >
             Logout
         </button>
     ) : isRegisterPage ? (
         <Link to="/login">
-            <button className="px-4 btn py-1 text-lg border-green-900 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+            <button className="px-4 btn dark:bg-gray-800 dark:hover:bg-gray-900 py-1 text-lg border-green-900 bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
                 Login
             </button>
         </Link>
     ) : isLoginPage ? (
         <Link to="/register">
-            <button className="px-4 btn py-1 text-lg bg-green-700 border-green-900 hover:bg-green-600 rounded-full text-white transition-all">
+            <button className="px-4 btn dark:bg-gray-800 dark:hover:bg-gray-900 py-1 text-lg bg-green-700 border-green-900 hover:bg-green-600 rounded-full text-white transition-all">
                 Register
             </button>
         </Link>
     ) : (
         <Link to="/register">
-            <button className="px-4 btn py-1 border-green-900 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
+            <button className="px-4 btn dark:bg-gray-800 dark:hover:bg-gray-900 py-1 border-green-900 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all">
                 Register
             </button>
         </Link>
     );
 
     return (
-        <nav className="w-full fixed z-50 bg-gradient-to-r from-green-900 via-black to-green-900 bg-opacity-60 backdrop-blur-md shadow-md">
+        <nav className="w-full fixed z-50 bg-gradient-to-r from-green-900 via-black to-green-900 bg-opacity-60 backdrop-blur-md shadow-md dark:from-gray-900 dark:via-black dark:to-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+                {/* Logo */}
                 <div className="flex items-center gap-2">
                     <img
                         src="https://i.ibb.co/B2H1nRkq/review-hub.png"
                         alt="ReviewHub Logo"
-                        className="w-10 h-10 rounded-full"
+                        className="w-10 h-10 rounded-full border-2 border-green-500 dark:border-green-400"
                     />
-                    <span className="text-white roboto text-2xl font-bold tracking-wide">
-                        Review<span className="text-green-400">Hub</span>
+                    <span className="text-white dark:text-gray-200 roboto text-2xl font-bold tracking-wide">
+                        Review<span className="text-green-400 dark:text-green-300">Hub</span>
                     </span>
                 </div>
 
                 {/* Desktop */}
-                <div className="hidden roboto font-bold md:flex items-center gap-6 text-white">
+                <div className="hidden roboto font-bold md:flex items-center gap-6 text-white dark:text-gray-200">
                     {navLinks.map(link => (
                         <Link
                             key={link.name}
                             to={link.path}
-                            className={`hover:text-green-400 transition-colors duration-200 ${currentPath === link.path ? 'text-green-400' : ''}`}
+                            className={`hover:text-green-400 dark:hover:text-green-300 transition-colors duration-200 ${currentPath === link.path
+                                    ? 'text-green-400 dark:text-green-300'
+                                    : ''
+                                }`}
                         >
                             {link.name}
                         </Link>
                     ))}
-
-                    {/* Dark mode toggle */}
-                    <button
-                        onClick={toggleTheme}
-                        aria-label="Toggle dark mode"
-                        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                        className="p-2 rounded-full border border-green-900 bg-green-700 hover:bg-green-600 text-white transition-all"
-                    >
-                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                    </button>
+                    <ModeButton />
 
                     {user && (
                         <img
                             src={user?.photoURL || '/avatar.jpg'}
                             alt="User Avatar"
-                            className="w-8 h-8 rounded-full border-2 border-green-500"
+                            className="w-8 h-8 rounded-full border-2 border-green-500 dark:border-green-300"
                         />
                     )}
                     {authButton}
@@ -132,7 +110,7 @@ const Navbar = () => {
 
                 {/* Mobile menu button */}
                 <div className="md:hidden flex items-center">
-                    <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+                    <button onClick={() => setIsOpen(!isOpen)} className="text-white dark:text-gray-200">
                         {isOpen ? <X size={26} /> : <Menu size={26} />}
                     </button>
                 </div>
@@ -140,36 +118,28 @@ const Navbar = () => {
 
             {/* Mobile dropdown */}
             {isOpen && (
-                <div className="md:hidden roboto bg-black bg-opacity-90 text-white px-4 pt-4 pb-6 space-y-4">
+                <div className="md:hidden roboto bg-black bg-opacity-90 dark:bg-gray-900 dark:bg-opacity-95 text-white dark:text-gray-200 px-4 pt-4 pb-6 space-y-4">
                     {navLinks.map(link => (
                         <Link
                             key={link.name}
                             to={link.path}
-                            className={`block hover:text-green-400 ${currentPath === link.path ? 'text-green-400' : ''}`}
+                            className={`block hover:text-green-400 dark:hover:text-green-300 ${currentPath === link.path
+                                    ? 'text-green-400 dark:text-green-300'
+                                    : ''
+                                }`}
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}
                         </Link>
                     ))}
 
-                    {/* Dark mode toggle (mobile) */}
-                    <div className="flex items-center justify-between">
-                        <button
-                            onClick={toggleTheme}
-                            aria-label="Toggle dark mode"
-                            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                            className="p-2 rounded-full border border-green-900 bg-green-700 hover:bg-green-600 text-white transition-all"
-                        >
-                            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                        </button>
-                    </div>
-
                     <div className="flex items-center gap-4 mt-4">
+                        <ModeButton />
                         {user && (
                             <img
                                 src={user?.photoURL || '/avatar.jpg'}
                                 alt="User Avatar"
-                                className="w-8 h-8 rounded-full border-2 border-green-500"
+                                className="w-8 h-8 rounded-full border-2 border-green-500 dark:border-green-300"
                             />
                         )}
                         {user ? (
@@ -178,7 +148,7 @@ const Navbar = () => {
                                     handleLogout();
                                     setIsOpen(false);
                                 }}
-                                className="px-4 py-1 border-green-900 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white transition-all"
+                                className="px-4 py-1 dark:bg-gray-800 dark:hover:bg-gray-900 border-green-900 dark:border-green-300 text-lg bg-green-700 hover:bg-green-600 rounded-full text-white dark:text-gray-100 transition-all"
                             >
                                 Logout
                             </button>
@@ -189,6 +159,7 @@ const Navbar = () => {
                 </div>
             )}
         </nav>
+
     );
 };
 

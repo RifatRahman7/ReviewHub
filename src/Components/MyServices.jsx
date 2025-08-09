@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import useAxiosPublic from '../hooks/useAxios';
+import { Loader } from 'lucide-react';
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -73,8 +74,7 @@ const MyServices = () => {
             <Navbar />
 
             <div className="flex-grow px-4 sm:px-6 lg:px-10 py-16 max-w-7xl mx-auto roboto">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl mt-5 font-bold text-green-400 mb-8 text-center">My Services</h1>
-
+                <h1 className="text-3xl sm:text-4xl lg:text-4xl mt-5 font-bold text-green-400 mb-8 text-center">My Services</h1>
                 <div className="overflow-x-auto bg-black bg-opacity-50 rounded-md shadow-md">
                     <table className="min-w-full table-auto border border-green-700 text-sm sm:text-base md:text-lg lg:text-xl text-white">
                         <thead className="bg-green-900">

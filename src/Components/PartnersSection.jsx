@@ -20,14 +20,14 @@ const partners = [
 
 const PartnersSection = () => {
   return (
-    <section className="w-full py-12 px-4 bg-gradient-to-br from-green-800 via-black to-green-800 text-white roboto backdrop-blur-md">
+    <section className="w-full py-12 px-4 bg-gradient-to-br from-green-800 via-black to-green-800 text-white roboto backdrop-blur-md dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
       <div className="max-w-7xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-5xl font-bold mb-6"
+          className="text-5xl font-bold mb-6 dark:text-white"
         >
           Meet Our Partners
         </motion.h2>
@@ -36,7 +36,7 @@ const PartnersSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto"
+          className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto dark:text-gray-300"
         >
           Our trusted partners help us keep ReviewHub secure, reliable, and accurate for all users.
         </motion.p>
@@ -48,7 +48,7 @@ const PartnersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-black/50 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-green-600 transition duration-300"
+              className="bg-black/50 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-green-600 transition duration-300 dark:bg-gray-900/70"
             >
               <div className="flex justify-center mb-4">
                 <img
@@ -58,7 +58,7 @@ const PartnersSection = () => {
                 />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-green-400">{partner.name}</h3>
-              <p className="text-gray-300 text-sm">{partner.description}</p>
+              <p className="text-gray-300 text-sm dark:text-gray-300">{partner.description}</p>
             </motion.div>
           ))}
         </div>

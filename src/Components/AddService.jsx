@@ -45,108 +45,113 @@ const AddService = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-900 via-black to-green-900">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-900 via-black to-green-900 dark:from-gray-900 dark:via-black dark:to-gray-900">
       <Navbar />
 
       <div className="flex-grow flex items-center justify-center pt-20 pb-10">
-        <form onSubmit={handleAddService} className="max-w-xl w-full bg-black bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-white roboto">
-          <h2 className="text-4xl font-bold mb-8 text-green-400 text-center">Add New Service</h2>
+        <form
+          onSubmit={handleAddService}
+          className="max-w-xl w-full bg-black bg-opacity-70 dark:bg-gray-900 dark:bg-opacity-80 backdrop-blur-md rounded-lg p-8 text-white roboto"
+        >
+          <h2 className="text-4xl font-bold mb-8 text-green-400 text-center dark:text-green-300">
+            Add New Service
+          </h2>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Service Image URL</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Service Image URL</span>
             <input
               type="url"
               name="image"
               placeholder="https://your-service-image.com"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Service Title</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Service Title</span>
             <input
               type="text"
               name="title"
               placeholder="Enter service title"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Company Name</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Company Name</span>
             <input
               type="text"
               name="company"
               placeholder="Enter company name"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Company Website</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Company Website</span>
             <input
               type="url"
               name="website"
               placeholder="https://company.com"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Category</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Category</span>
             <input
               type="text"
               name="category"
               placeholder="e.g., Marketing, Design, Development"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Price (USD)</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Price (USD)</span>
             <input
               type="number"
               name="price"
               placeholder="e.g., 100"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Description</span>
+            <span className="text-green-300 mb-1 block dark:text-green-200">Description</span>
             <textarea
               name="description"
               rows="4"
               placeholder="Write a short description of the service"
-              className="w-full rounded-md px-3 py-2 resize-none bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 resize-none bg-black bg-opacity-50 dark:bg-gray-800 border border-green-600 focus:border-green-400 outline-none"
             ></textarea>
           </label>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
-              <span className="text-green-300 mb-1 block">Added Date</span>
+              <span className="text-green-300 mb-1 block dark:text-green-200">Added Date</span>
               <input
                 type="text"
                 value="Auto-generated"
                 readOnly
-                className="w-full px-3 py-2 rounded-md bg-gray-800 text-gray-400 border border-green-600"
+                className="w-full px-3 py-2 rounded-md bg-gray-800 text-gray-400 border border-green-600 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
 
             <div>
-              <span className="text-green-300 mb-1 block">User Email</span>
+              <span className="text-green-300 mb-1 block dark:text-green-200">User Email</span>
               <input
                 type="text"
                 value="Authenticated user email"
                 readOnly
-                className="w-full px-3 py-2 rounded-md bg-gray-800 text-gray-400 border border-green-600"
+                className="w-full px-3 py-2 rounded-md bg-gray-800 text-gray-400 border border-green-600 dark:bg-gray-700 dark:text-gray-300"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full btn text-lg bg-green-700 hover:bg-green-600 transition border-green-900 rounded-full py-3 text-white font-semibold"
+            className="w-full btn dark:bg-gray-800 dark:hover:bg-gray-900 text-lg bg-green-700 hover:bg-green-600 transition border-green-900 rounded-full py-3 text-white font-semibold"
           >
             Add Service
           </button>
