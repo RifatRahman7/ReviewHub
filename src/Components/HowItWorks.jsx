@@ -20,14 +20,14 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="w-full py-16 px-4 roboto bg-gradient-to-br from-green-800 via-black to-green-800 text-white">
+    <section className="w-full py-16 px-4 roboto bg-gradient-to-br from-green-800 via-black to-green-800 text-white dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white">
       <div className="max-w-7xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-5xl font-bold mb-6"
+          className="text-5xl font-bold mb-6 dark:text-white"
         >
           How ReviewHub Works
         </motion.h2>
@@ -37,7 +37,7 @@ const HowItWorks = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-gray-300 text-xl mb-12 max-w-2xl mx-auto"
+          className="text-gray-300 text-xl mb-12 max-w-2xl mx-auto dark:text-gray-300"
         >
           Getting started is simple. Whether you're discovering services or showcasing your own, ReviewHub makes it seamless.
         </motion.p>
@@ -50,11 +50,11 @@ const HowItWorks = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-black/50 backdrop-blur-md rounded-xl p-6 shadow-md hover:shadow-green-600 transition"
+              className="bg-black/50 backdrop-blur-md rounded-xl p-6 shadow-md hover:shadow-green-600 transition dark:bg-gray-900/70"
             >
               <div className="text-green-400 text-3xl font-bold mb-2">{step.number}</div>
               <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-              <p className="text-gray-300 text-sm">{step.description}</p>
+              <p className="text-gray-300 text-sm dark:text-gray-300">{step.description}</p>
             </motion.div>
           ))}
         </div>

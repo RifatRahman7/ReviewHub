@@ -20,7 +20,7 @@ const partners = [
 
 const PartnersSection = () => {
   return (
-    <section className="w-full py-12 px-4 bg-gradient-to-br from-green-800 via-black to-green-800 text-white roboto backdrop-blur-md dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
+    <section className="w-full py-12 px-4 bg-gradient-to-br from-green-800 via-black to-green-800 text-white roboto backdrop-blur-md dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white">
       <div className="max-w-7xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}

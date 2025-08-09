@@ -66,7 +66,7 @@ const AllServices = () => {
         : filteredServices.slice(0, visibleCount);
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black dark:from-gray-900 dark:via-gray-800 dark:to-black">
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black dark:from-gray-900 dark:via-gray-900 dark:to-black">
             <Navbar />
             <div className="flex-grow px-4 py-20 max-w-7xl mx-auto roboto">
                 <h1 className="text-center text-4xl font-bold text-green-400 mb-6 dark:text-white">All Services</h1>

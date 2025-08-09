@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams, Link } from 'react-router'; // ADDED Link
+import { useParams, Link } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { toast } from 'react-toastify';
@@ -68,18 +68,18 @@ const ServiceDetails = () => {
 
     if (!service) {
         return (
-            <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
+            <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black dark:from-gray-900 dark:via-gray-800 dark:to-black">
                 <Navbar />
                 <div className="flex-grow px-4 py-16 max-w-4xl mx-auto roboto">
                     <div className="mb-6">
                         <Link
                             to="/services"
-                            className="inline-block bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold border border-green-900"
+                            className="inline-block bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold border border-green-900 dark:bg-gray-800 dark:hover:bg-gray-900"
                         >
                             ← All Services
                         </Link>
                     </div>
-                    <h1>Add service to see!</h1>
+                    <h1 className="dark:text-white">Add service to see!</h1>
                     <Loader />
                 </div>
                 <Footer />
@@ -88,36 +88,37 @@ const ServiceDetails = () => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black text-white">
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black text-white dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white ">
             <Navbar />
             <div className="flex-grow px-4 py-16 max-w-4xl mx-auto roboto">
-               <h1 className='text-4xl flex justify-center font-bold p-5'>Service Details</h1>
+               <h1 className="text-4xl text-green-600 flex justify-center font-bold p-5 dark:text-white">Service Details</h1>
 
-                <div className="bg-black bg-opacity-60 backdrop-blur-md p-6 rounded-xl mb-10">
-                    <img src={service.image} alt={service.title} className="w-full h-64 object-cover rounded-md mb-4 border border-green-700" />
+                <div className="bg-black dark:border dark:border-green-700 bg-opacity-60 backdrop-blur-md p-6 rounded-xl mb-10 dark:bg-gray-900/70">
+                    <img src={service.image} alt={service.title} className="w-full h-64 object-cover rounded-md mb-4 border border-green-700 dark:border-green-600" />
                     <h1 className="text-3xl font-bold text-green-300 mb-2">{service.title}</h1>
                     <p className="text-gray-300 mb-4">{service.description}</p>
-                    <div className="flex justify-between mb-2 text-green-400 font-semibold">
+                    <div className="flex  justify-between mb-2 text-green-400 font-semibold">
                         <span>Category: {service.category}</span>
                         <span>Price: ${service.price}</span>
                     </div>
                 </div>
-                 {/* Back to All Services button */}
+
+                {/* Back to All Services button */}
                 <div className="flex justify-center mb-4">
                     <Link
                         to="/services"
-                        className="inline-block bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold border border-green-900"
+                        className="inline-block bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold border border-green-900 dark:bg-gray-800 dark:hover:bg-gray-900"
                     >
                         ← All Services
                     </Link>
                 </div>
 
                 <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-green-400 mb-4">Reviews ({reviews.length})</h2>
+                    <h2 className="text-2xl  font-bold text-green-400 mb-4">Reviews ({reviews.length})</h2>
                     {reviews.map((r, idx) => {
                         const numericRating = Number(r.rating) || 0;
                         return (
-                            <div key={idx} className="bg-black bg-opacity-50 backdrop-blur-md p-4 rounded-lg mb-3 flex space-x-4">
+                            <div key={idx} className="bg-black dark:border dark:border-green-700 bg-opacity-50 backdrop-blur-md p-4 rounded-lg mb-3 flex space-x-4 dark:bg-gray-900/70">
                                 <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full border-2 border-green-500" />
                                 <div>
                                     <div className="text-green-300 font-semibold">{r.userName}</div>
@@ -139,17 +140,17 @@ const ServiceDetails = () => {
                 </div>
 
                 {user && (
-                    <form onSubmit={handleAddReview} className="bg-black bg-opacity-60 backdrop-blur-md p-6 rounded-lg">
+                    <form onSubmit={handleAddReview} className="bg-black bg-opacity-60 backdrop-blur-md p-6 rounded-lg dark:bg-gray-900/70">
                         <h3 className="text-xl font-bold text-green-300 mb-4">Add a Review</h3>
                         <textarea
                             value={reviewText}
                             onChange={e => setReviewText(e.target.value)}
-                            className="w-full bg-black bg-opacity-50 border border-green-600 rounded-md px-3 py-2 text-white mb-3"
+                            className="w-full bg-black bg-opacity-50 border border-green-600 rounded-md px-3 py-2 text-white mb-3 dark:bg-gray-900 dark:border-green-700"
                             rows="3"
                             placeholder="Write your review..."
                             required
                         />
-                        <div className="flex items-center mb-4 space-x-3">
+                        <div className="flex items-center mb-4 space-x-3 ">
                             <span className="text-green-300">Rating:</span>
                             <Rating
                                 initialRating={rating}
@@ -161,7 +162,7 @@ const ServiceDetails = () => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-green-700 hover:bg-green-600 btn transition rounded-full py-2 px-6 text-white font-semibold"
+                            className="bg-green-700 hover:bg-green-600 btn transition rounded-full py-2 px-6 text-white font-semibold dark:bg-gray-800 dark:hover:bg-gray-900"
                         >
                             Add Review
                         </button>

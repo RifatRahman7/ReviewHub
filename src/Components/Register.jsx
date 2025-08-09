@@ -68,12 +68,12 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white">
       <ToastContainer theme="colored" />
       <Navbar />
 
       <div className="flex-grow flex items-center justify-center pt-20 pb-10">
-        <form onSubmit={handleRegister} className="mt-8 max-w-md w-full bg-black bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-white roboto">
+        <form onSubmit={handleRegister} className="mt-8 max-w-md w-full dark:border dark:border-green-700 bg-black bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-white roboto dark:bg-gray-900/70">
           <h2 className="text-4xl font-bold mb-8 text-green-400 text-center">Register Please !</h2>
 
           <label className="block mb-4">
@@ -81,7 +81,7 @@ const Register = () => {
             <input
               type="text"
               name="name"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
               placeholder="Your full name..."
               required
             />
@@ -93,7 +93,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
               placeholder="Enter your e-mail..."
               required
             />
@@ -104,7 +104,7 @@ const Register = () => {
             <input
               type="url"
               name="photoURL"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
               placeholder="https://your-photo-url.com"
               required
             />
@@ -115,7 +115,7 @@ const Register = () => {
             <input
               type="password"
               name="password"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none"
+              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
               placeholder="Enter a strong password..."
               required
             />
@@ -124,7 +124,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full btn bg-green-700 border-green-900 hover:bg-green-600 transition text-xl rounded-full py-3 text-white font-semibold"
+            className="w-full dark:bg-gray-800 dark:hover:bg-gray-900 btn bg-green-700 border-green-900 hover:bg-green-600 transition text-xl rounded-full py-3 text-white font-semibold"
           >
             Register
           </button>
@@ -132,7 +132,7 @@ const Register = () => {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full mt-4 flex btn items-center justify-center gap-3 border border-green-600 hover:border-green-400 text-white rounded-full py-3 transition bg-black bg-opacity-50"
+            className="w-full mt-4 flex btn items-center justify-center gap-3 border border-green-600 hover:border-green-400 text-white rounded-full py-3 transition bg-black bg-opacity-50 dark:bg-gray-900 dark:border-green-700"
           >
             <img
               src="https://i.ibb.co/5xMMFjjG/Google-G-logo-svg.png"

@@ -90,18 +90,21 @@ const MyReviews = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-black via-green-950 to-black text-white flex flex-col">
+        <div className="min-h-screen bg-gradient-to-br from-black via-green-950 to-black text-white flex flex-col dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white">
             <Navbar />
 
             <div className="flex-grow px-4 py-16 max-w-5xl mx-auto roboto">
-                <h1 className="text-4xl font-bold text-center text-green-400 mb-8">My Reviews</h1>
+                <h1 className="text-4xl font-bold text-center text-green-400 mb-8 mt-5 dark:text-white">My Reviews</h1>
 
                 {myReviews.length === 0 ? (
-                    <Loader></Loader>
+                    <Loader />
                 ) : (
                     <div className="space-y-6">
                         {myReviews.map(review => (
-                            <div key={review._id} className="bg-black hover:scale-105  transition-transform duration-300 bg-opacity-50 rounded-md p-5 border border-green-800 shadow-md">
+                            <div
+                                key={review._id}
+                                className="bg-black hover:scale-105 transition-transform duration-300 bg-opacity-50 rounded-md p-5 border border-green-800 shadow-md dark:bg-gray-900/70 dark:border-green-700"
+                            >
                                 <div className="mb-2 text-green-300 font-bold text-lg">
                                     {serviceTitles[review.serviceId] || 'Title...'}
                                 </div>
@@ -120,11 +123,21 @@ const MyReviews = () => {
                                     <p className="text-gray-300">{review.text}</p>
                                 </div>
                                 <div className="flex gap-2">
-                                    <button onClick={() => setEditingReview(review)} className="btn px-4 py-1 bg-yellow-500 hover:bg-yellow-600 rounded-full text-sm text-white">Update</button>
-                                    <button onClick={() => {
-                                        setDeleteId(review._id);
-                                        setShowDeleteModal(true);
-                                    }} className="btn px-4 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm text-white">Delete</button>
+                                    <button
+                                        onClick={() => setEditingReview(review)}
+                                        className="btn px-4 py-1 bg-yellow-500 hover:bg-yellow-600 rounded-full text-sm text-white"
+                                    >
+                                        Update
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            setDeleteId(review._id);
+                                            setShowDeleteModal(true);
+                                        }}
+                                        className="btn px-4 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm text-white"
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                         ))}
@@ -135,7 +148,7 @@ const MyReviews = () => {
             {/* Update Modal */}
             {editingReview && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
-                    <form onSubmit={handleUpdate} className="bg-gray-900 p-6 rounded-lg w-full max-w-md">
+                    <form onSubmit={handleUpdate} className="bg-gray-900 p-6 rounded-lg w-full max-w-md dark:bg-gray-900">
                         <h3 className="text-xl font-bold text-green-300 mb-4">Update Review</h3>
 
                         <textarea
@@ -143,7 +156,7 @@ const MyReviews = () => {
                             defaultValue={editingReview.text}
                             required
                             rows="3"
-                            className="w-full mb-3 px-3 py-2 rounded-md bg-black border border-green-600 text-white"
+                            className="w-full mb-3 px-3 py-2 rounded-md bg-black border border-green-600 text-white dark:bg-gray-900 dark:border-green-700"
                         />
                         <input
                             name="rating"
@@ -153,7 +166,7 @@ const MyReviews = () => {
                             max="5"
                             defaultValue={editingReview.rating}
                             required
-                            className="w-full mb-4 px-3 py-2 rounded-md bg-black border border-green-600 text-white"
+                            className="w-full mb-4 px-3 py-2 rounded-md bg-black border border-green-600 text-white dark:bg-gray-900 dark:border-green-700"
                         />
                         <div className="flex justify-end gap-2">
                             <button type="button" onClick={() => setEditingReview(null)} className="btn px-4 py-2 bg-red-600 text-white rounded-md">Cancel</button>
@@ -166,10 +179,10 @@ const MyReviews = () => {
             {/* Delete Modal */}
             {showDeleteModal && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
-                    <div className="bg-gray-900 p-6 rounded-lg w-full max-w-md">
+                    <div className="bg-gray-900 p-6 rounded-lg w-full max-w-md dark:bg-gray-900">
                         <h3 className="text-lg text-red-400 font-semibold mb-4">Confirm Deletion?</h3>
                         <div className="flex justify-end gap-3">
-                            <button onClick={() => setShowDeleteModal(false)} className="btn px-4 py-2 border border-gray-500 text-black">Cancel</button>
+                            <button onClick={() => setShowDeleteModal(false)} className="btn px-4 py-2 border border-gray-500 text-black dark:bg-gray-900">Cancel</button>
                             <button onClick={confirmDelete} className="btn px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-500">Delete</button>
                         </div>
                     </div>
