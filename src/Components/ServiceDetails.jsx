@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router'; // ADDED Link
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { toast } from 'react-toastify';
@@ -30,48 +30,58 @@ const ServiceDetails = () => {
     }, [id, axiosPublic]);
 
     const handleAddReview = async (e) => {
-    e.preventDefault();
-    if (!user) {
-        toast.error('Please log in to add a review');
-        return;
-    }
-
-    const review = {
-        serviceId: id,
-        userEmail: user.email,
-        userName: user.displayName || 'Anonymous',
-        userPhoto: user.photoURL || '',
-        text: reviewText,
-        rating,
-        date: new Date().toISOString()
-    };
-
-    try {
-        const res = await axiosPublic.post('/reviews', review);
-        if (res.data.insertedId) {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Review added successfully.',
-                icon: 'success',
-                confirmButtonColor: '#16a34a',
-                confirmButtonText: 'OK'
-            });
-            setReviews([review, ...reviews]);
-            setReviewText('');
-            setRating(0);
+        e.preventDefault();
+        if (!user) {
+            toast.error('Please log in to add a review');
+            return;
         }
-    } catch (err) {
-        console.error(err);
-        toast.error('Failed to add review');
-    }
-};
+
+        const review = {
+            serviceId: id,
+            userEmail: user.email,
+            userName: user.displayName || 'Anonymous',
+            userPhoto: user.photoURL || '',
+            text: reviewText,
+            rating,
+            date: new Date().toISOString()
+        };
+
+        try {
+            const res = await axiosPublic.post('/reviews', review);
+            if (res.data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Review added successfully.',
+                    icon: 'success',
+                    confirmButtonColor: '#16a34a',
+                    confirmButtonText: 'OK'
+                });
+                setReviews([review, ...reviews]);
+                setReviewText('');
+                setRating(0);
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error('Failed to add review');
+        }
+    };
 
     if (!service) {
         return (
             <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
                 <Navbar />
-                <h1>Add service to see!</h1>
-                <Loader />
+                <div className="flex-grow px-4 py-16 max-w-4xl mx-auto roboto">
+                    <div className="mb-6">
+                        <Link
+                            to="/services"
+                            className="inline-block bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold border border-green-900"
+                        >
+                            ← All Services
+                        </Link>
+                    </div>
+                    <h1>Add service to see!</h1>
+                    <Loader />
+                </div>
                 <Footer />
             </div>
         );
@@ -81,6 +91,8 @@ const ServiceDetails = () => {
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black text-white">
             <Navbar />
             <div className="flex-grow px-4 py-16 max-w-4xl mx-auto roboto">
+               <h1 className='text-4xl flex justify-center font-bold p-5'>Service Details</h1>
+
                 <div className="bg-black bg-opacity-60 backdrop-blur-md p-6 rounded-lg mb-10">
                     <img src={service.image} alt={service.title} className="w-full h-64 object-cover rounded-md mb-4 border border-green-700" />
                     <h1 className="text-3xl font-bold text-green-300 mb-2">{service.title}</h1>
@@ -89,6 +101,15 @@ const ServiceDetails = () => {
                         <span>Category: {service.category}</span>
                         <span>Price: ${service.price}</span>
                     </div>
+                </div>
+                 {/* Back to All Services button */}
+                <div className="flex justify-center">
+                    <Link
+                        to="/services"
+                        className="inline-block bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold border border-green-900"
+                    >
+                        ← All Services
+                    </Link>
                 </div>
 
                 <div className="mb-8">
@@ -99,7 +120,6 @@ const ServiceDetails = () => {
                             <div key={idx} className="bg-black bg-opacity-50 backdrop-blur-md p-4 rounded-lg mb-3 flex space-x-4">
                                 <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full border-2 border-green-500" />
                                 <div>
-                                    
                                     <div className="text-green-300 font-semibold">{r.userName}</div>
                                     <div className="text-yellow-400 mb-1">
                                         <Rating
@@ -116,7 +136,6 @@ const ServiceDetails = () => {
                             </div>
                         );
                     })}
-
                 </div>
 
                 {user && (
@@ -142,7 +161,7 @@ const ServiceDetails = () => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-green-700 hover:bg-green-600 transition rounded-full py-2 px-6 text-white font-semibold"
+                            className="bg-green-700 hover:bg-green-600 btn transition rounded-full py-2 px-6 text-white font-semibold"
                         >
                             Add Review
                         </button>

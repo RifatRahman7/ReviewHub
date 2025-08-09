@@ -9,6 +9,7 @@ const AllServices = () => {
     const [services, setServices] = useState([]);
     const [filteredServices, setFilteredServices] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [sortOption, setSortOption] = useState('default'); // NEW
     const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
@@ -27,21 +28,34 @@ const AllServices = () => {
 
     useEffect(() => {
         const query = searchQuery.toLowerCase();
-        const filtered = services.filter(service =>
+        let filtered = services.filter(service =>
             service.title?.toLowerCase().includes(query) ||
             service.category?.toLowerCase().includes(query) ||
             service.company?.toLowerCase().includes(query)
         );
+
+        // Sorting by price
+        if (sortOption === 'priceAsc') {
+            filtered = [...filtered].sort(
+                (a, b) => (parseFloat(a.price) || 0) - (parseFloat(b.price) || 0)
+            );
+        } else if (sortOption === 'priceDesc') {
+            filtered = [...filtered].sort(
+                (a, b) => (parseFloat(b.price) || 0) - (parseFloat(a.price) || 0)
+            );
+        }
+
         setFilteredServices(filtered);
-    }, [searchQuery, services]);
+    }, [searchQuery, services, sortOption]); // include sortOption
 
     return (
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black">
             <Navbar />
             <div className="flex-grow px-4 py-20 max-w-7xl mx-auto roboto">
                 <h1 className="text-center text-4xl font-bold text-green-400 mb-6">All Services</h1>
-                {/* Search bar */}
-                <div className="max-w-md mx-auto mb-12">
+
+                {/* Search + Sort */}
+                <div className="max-w-md mx-auto mb-12 space-y-3">
                     <input
                         type="text"
                         value={searchQuery}
@@ -49,6 +63,15 @@ const AllServices = () => {
                         placeholder="Search by title, category or company..."
                         className="w-full px-4 py-2 rounded-md bg-black border border-green-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
                     />
+                    <select
+                        value={sortOption}
+                        onChange={(e) => setSortOption(e.target.value)}
+                        className="w-full px-4 py-2 rounded-md bg-black border border-green-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
+                    >
+                        <option value="default">Sort: Default</option>
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                    </select>
                 </div>
 
                 {filteredServices.length === 0 ? (
