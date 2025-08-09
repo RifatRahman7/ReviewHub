@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import useAxiosPublic from '../hooks/useAxios';
+import Loader from './Loader';
 
 const AllServices = () => {
     const [services, setServices] = useState([]);
@@ -51,7 +52,7 @@ const AllServices = () => {
                 </div>
 
                 {filteredServices.length === 0 ? (
-                    <p className="text-center text-gray-400">No services match your search.</p>
+                    <Loader />
                 ) : (
                     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {filteredServices.map(service => (

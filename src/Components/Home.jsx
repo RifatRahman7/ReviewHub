@@ -4,6 +4,7 @@ import HowItWorks from './HowItWorks';
 import Navbar from './Navbar';
 import PartnersSection from './PartnersSection';
 import Register from './Register';
+import ReviewTipsGuides from './ReviewTipsGuides';
 import WhyChooseUs from './WhyChooseUs';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
            <PartnersSection></PartnersSection>
            <WhyChooseUs></WhyChooseUs>
            <HowItWorks></HowItWorks>
+           <ReviewTipsGuides></ReviewTipsGuides>
            <Footer></Footer>
         </div>
     );
