@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import useAxiosPublic from '../hooks/useAxios';
+import Loader from './Loader';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -96,7 +97,7 @@ const MyReviews = () => {
                 <h1 className="text-4xl font-bold text-center text-green-400 mb-8">My Reviews</h1>
 
                 {myReviews.length === 0 ? (
-                    <p className="text-center text-gray-400">No reviews submitted yet.</p>
+                    <Loader></Loader>
                 ) : (
                     <div className="space-y-6">
                         {myReviews.map(review => (

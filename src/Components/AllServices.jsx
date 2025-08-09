@@ -127,7 +127,7 @@ const AllServices = () => {
                         </div>
 
                         {!showAll && filteredServices.length > visibleCount && (
-                            <div className="flex justify-center mt-2 mb-8">
+                            <div className="flex justify-center mt-5 mb-1">
                                 <button
                                     type="button"
                                     onClick={() => setShowAll(true)}
