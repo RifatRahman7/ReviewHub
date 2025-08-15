@@ -19,8 +19,8 @@ const item = {
 
 const ErrorPage = () => {
   return (
-    <div className="relative min-h-screen flex roboto flex-col bg-gradient-to-br from-green-900 via-black to-green-900 text-white overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <div className="relative min-h-screen flex roboto flex-col bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <motion.div
         aria-hidden
@@ -37,7 +37,7 @@ const ErrorPage = () => {
 
       <div className="flex-grow flex items-center justify-center px-4 pt-20 pb-10">
         <motion.div
-          className="relative max-w-xl w-full text-center bg-black/50 backdrop-blur-xl rounded-2xl p-10 shadow-[0_0_40px_rgba(16,185,129,0.15)] border border-green-800/40"
+          className="relative max-w-xl w-full text-center bg-white/70 backdrop-blur-xl rounded-2xl p-10 shadow-[0_0_40px_rgba(16,185,129,0.15)] border border-green-300/40 dark:bg-black/50 dark:border-green-800"
           variants={container}
           initial="hidden"
           animate="visible"
@@ -50,25 +50,25 @@ const ErrorPage = () => {
           />
 
           <motion.h1
-            className="text-7xl font-extrabold mb-3 bg-gradient-to-b from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent tracking-tight"
+            className="text-7xl font-extrabold mb-3 bg-gradient-to-b from-green-600 via-emerald-400 to-green-600 bg-clip-text text-transparent tracking-tight"
             variants={item}
           >
             404
           </motion.h1>
 
           <motion.h2
-            className="text-2xl font-bold text-green-300 mb-3"
+            className="text-2xl font-bold text-green-700 mb-3 dark:text-green-300"
             variants={item}
           >
             Page Not Found 😶‍🌫️
           </motion.h2>
 
           <motion.div
-            className="h-px w-20 mx-auto mb-5 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-60"
+            className="h-px w-20 mx-auto mb-5 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-60"
             variants={item}
           />
 
-          <motion.p className="text-gray-300 mb-8 leading-relaxed" variants={item}>
+          <motion.p className="text-gray-700 mb-8 leading-relaxed dark:text-gray-300" variants={item}>
             Oops! The page you're looking for doesn't exist or has been moved.
           </motion.p>
 
@@ -77,7 +77,7 @@ const ErrorPage = () => {
               <motion.button
                 whileHover={{ scale: 1.03, boxShadow: '0 0 30px rgba(16,185,129,0.35)' }}
                 whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 rounded-full btn bg-green-700 hover:bg-green-600 text-white font-semibold transition border border-green-900"
+                className="px-6 py-3 rounded-full btn bg-green-700 hover:bg-green-600 text-white font-semibold transition border border-green-900 dark:border-green-700"
                 aria-label="Go back to homepage"
               >
                 Go Back Home

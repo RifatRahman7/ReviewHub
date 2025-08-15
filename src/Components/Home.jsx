@@ -1,4 +1,5 @@
 import Banner from './Banner';
+import FeaturedServices from './FeaturedServices';
 import Footer from './Footer';
 import HowItWorks from './HowItWorks';
 import Navbar from './Navbar';
@@ -13,6 +14,7 @@ const Home = () => {
         <div>
            <Navbar></Navbar>
            <Banner></Banner>
+           <FeaturedServices></FeaturedServices>
            <PromotionalSection></PromotionalSection>
            <PartnersSection></PartnersSection>
            <WhyChooseUs></WhyChooseUs>

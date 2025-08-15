@@ -8,7 +8,7 @@ const slides = [
     title: "Discover Trusted Services",
     description:
       "Explore honest reviews from real users. Find services you can trust—fast, easy, and reliably with ReviewHub.",
-    image: "https://i.ibb.co/5hRDzvZ5/trusted.jpg",
+    image: "https://iili.io/FDQYHep.webp",
   },
   {
     title: "Share Your Experience",
@@ -46,42 +46,50 @@ const Banner = () => {
           transition={{ duration: 0.6 }}
           className="absolute top-0 left-0 w-full h-full"
         >
+          {/* Blurred image */}
           <img
             src={slides[current].image}
             alt={slides[current].title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover filter blur-sm scale-105"
+            style={{ transformOrigin: 'center' }}
           />
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col justify-center items-center text-center px-4">
-            <motion.h2
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-5xl md:text-6xl text-green-600 font-bold drop-shadow-lg"
-            >
-              {slides[current].title}
-            </motion.h2>
-            <motion.p
-              initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-xl md:text-2xl text-green-200 max-w-2xl mt-4 drop-shadow-md"
-            >
-              {slides[current].description}
-            </motion.p>
-            {!user && (
-              <motion.div
+          {/* Overlay with semi-transparent black to darken the image */}
+          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Blurred background container for text */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+            <div className="bg-black/60 backdrop-blur-lg rounded-xl p-8 max-w-4xl z-10 relative">
+              <motion.h2
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="text-5xl md:text-6xl text-green-400 font-extrabold drop-shadow-lg"
+              >
+                {slides[current].title}
+              </motion.h2>
+              <motion.p
                 initial={{ y: 60, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.6 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="text-xl md:text-2xl text-green-200 mt-4 drop-shadow-md"
               >
-                <Link
-                  to="/register"
-                  className="mt-6 inline-block px-6 py-3 bg-green-800 roboto hover:bg-green-600 text-white rounded-full font-semibold shadow-md transition"
+                {slides[current].description}
+              </motion.p>
+              {!user && (
+                <motion.div
+                  initial={{ y: 60, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.7, delay: 0.6 }}
                 >
-                  Get Started
-                </Link>
-              </motion.div>
-            )}
+                  <Link
+                    to="/register"
+                    className="mt-6 inline-block px-8 py-3 bg-green-700 hover:bg-green-600 text-white rounded-full font-semibold shadow-md transition"
+                  >
+                    Get Started
+                  </Link>
+                </motion.div>
+              )}
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>

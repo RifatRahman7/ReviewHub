@@ -18,7 +18,7 @@ const PromotionalSection = () => {
   ];
 
   return (
-    <section className="w-full py-16 px-4 bg-gradient-to-br from-black via-green-800 to-black text-white roboto dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
+    <section className="w-full py-16 px-4 bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 roboto dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <motion.h2
@@ -36,7 +36,7 @@ const PromotionalSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
             viewport={{ once: true }}
-            className="text-gray-300 text-lg mb-8"
+            className="text-gray-700 text-lg mb-8 dark:text-gray-300"
           >
             Turn authentic reviews into your competitive edge. Build credibility, reach more customers, and improve continuously.
           </motion.p>
@@ -49,14 +49,8 @@ const PromotionalSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <Link
-              to="/register"
-              className="inline-block bg-green-700 border border-green-900 hover:bg-green-600 transition rounded-full px-6 py-3 text-white font-semibold dark:bg-gray-800 dark:hover:bg-gray-900"
-            >
-              Get Started Free
-            </Link>
-            <Link
               to="/services"
-              className="inline-block bg-black/50 border border-green-600 hover:border-green-400 transition rounded-full px-6 py-3 text-white font-semibold backdrop-blur-sm dark:bg-gray-900/70 dark:border-green-700"
+              className="inline-block bg-white border hover:text-white border-green-600 hover:border-green-400 hover:bg-green-500 transition rounded-full px-6 py-3 text-green-700 font-semibold backdrop-blur-sm dark:bg-gray-900/70 dark:border-green-700 dark:text-white"
             >
               Explore Services
             </Link>
@@ -71,10 +65,10 @@ const PromotionalSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + idx * 0.15 }}
               viewport={{ once: true }}
-              className="bg-black/60 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-green-600 transition dark:bg-gray-900/70"
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-green-600 transition dark:bg-gray-900/70"
             >
-              <h3 className="text-green-400 text-xl font-semibold mb-2">{f.title}</h3>
-              <p className="text-gray-300 text-sm">{f.description}</p>
+              <h3 className="text-green-600 text-xl font-semibold mb-2 dark:text-green-400">{f.title}</h3>
+              <p className="text-gray-700 text-sm dark:text-gray-300">{f.description}</p>
             </motion.div>
           ))}
         </div>

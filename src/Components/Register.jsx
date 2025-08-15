@@ -68,20 +68,22 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
       <ToastContainer theme="colored" />
       <Navbar />
 
       <div className="flex-grow flex items-center justify-center pt-20 pb-10">
-        <form onSubmit={handleRegister} className="mt-8 max-w-md w-full dark:border dark:border-green-700 bg-black bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-white roboto dark:bg-gray-900/70">
-          <h2 className="text-4xl font-bold mb-8 text-green-400 text-center">Register Please !</h2>
+        <form onSubmit={handleRegister} className="mt-8 max-w-md w-full dark:border dark:border-green-700 bg-white bg-opacity-70 backdrop-blur-md rounded-lg p-8 text-gray-900 dark:text-white roboto dark:bg-gray-900/70 shadow-2xl transition-shadow">
+          <h2 className="text-4xl font-bold mb-8 text-green-700 text-center dark:text-green-300">
+            Register Please !
+          </h2>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Name</span>
+            <span className="text-green-700 mb-1 block dark:text-green-200">Name</span>
             <input
               type="text"
               name="name"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
+              className="w-full rounded-md px-3 py-2 bg-white bg-opacity-50 dark:bg-gray-900 border border-green-600 focus:border-green-400 outline-none text-gray-900 dark:text-white"
               placeholder="Your full name..."
               required
             />
@@ -89,33 +91,33 @@ const Register = () => {
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Email</span>
+            <span className="text-green-700 mb-1 block dark:text-green-200">Email</span>
             <input
               type="email"
               name="email"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
+              className="w-full rounded-md px-3 py-2 bg-white bg-opacity-50 dark:bg-gray-900 border border-green-600 focus:border-green-400 outline-none text-gray-900 dark:text-white"
               placeholder="Enter your e-mail..."
               required
             />
           </label>
 
           <label className="block mb-4">
-            <span className="text-green-300 mb-1 block">Photo URL</span>
+            <span className="text-green-700 mb-1 block dark:text-green-200">Photo URL</span>
             <input
               type="url"
               name="photoURL"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
+              className="w-full rounded-md px-3 py-2 bg-white bg-opacity-50 dark:bg-gray-900 border border-green-600 focus:border-green-400 outline-none text-gray-900 dark:text-white"
               placeholder="https://your-photo-url.com"
               required
             />
           </label>
 
           <label className="block mb-6">
-            <span className="text-green-300 mb-1 block">Password</span>
+            <span className="text-green-700 mb-1 block dark:text-green-200">Password</span>
             <input
               type="password"
               name="password"
-              className="w-full rounded-md px-3 py-2 bg-black bg-opacity-50 border border-green-600 focus:border-green-400 outline-none dark:bg-gray-900 dark:border-green-700"
+              className="w-full rounded-md px-3 py-2 bg-white bg-opacity-50 dark:bg-gray-900 border border-green-600 focus:border-green-400 outline-none text-gray-900 dark:text-white"
               placeholder="Enter a strong password..."
               required
             />
@@ -143,9 +145,9 @@ const Register = () => {
             <span className="text-green-400 text-lg font-medium">Google</span>
           </button>
 
-          <p className="mt-6 text-center text-green-300">
+          <p className="mt-6 text-center text-green-700 dark:text-green-300">
             Already have an account?{' '}
-            <Link to="/login" className="text-green-400 hover:underline">
+            <Link to="/login" className="text-green-600 hover:underline dark:text-green-400">
               Login here
             </Link>
           </p>

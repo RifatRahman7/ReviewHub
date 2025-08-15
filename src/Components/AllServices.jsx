@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -13,6 +13,7 @@ const AllServices = () => {
     const [showAll, setShowAll] = useState(false);
     const [visibleCount, setVisibleCount] = useState(8);
     const axiosPublic = useAxiosPublic();
+
     useEffect(() => {
         const calcVisible = () => {
             const w = window.innerWidth;
@@ -66,10 +67,10 @@ const AllServices = () => {
         : filteredServices.slice(0, visibleCount);
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-green-950 to-black dark:from-gray-900 dark:via-gray-900 dark:to-black">
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
             <Navbar />
             <div className="flex-grow px-4 py-20 max-w-7xl mx-auto roboto">
-                <h1 className="text-center text-4xl font-bold text-green-400 mb-6 dark:text-white">All Services</h1>
+                <h1 className="text-center text-4xl font-bold text-green-600 mb-6 dark:text-white">All Services</h1>
 
                 {/* Search + Sort */}
                 <div className="max-w-4xl mx-auto mb-12 space-y-3 md:space-y-0 md:space-x-4 md:flex">
@@ -78,12 +79,12 @@ const AllServices = () => {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search by title, category or company..."
-                        className="w-full md:flex-1 px-4 py-2 rounded-md bg-black border border-green-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-800 dark:border-green-700"
+                        className="w-full md:flex-1 px-4 py-2 rounded-md bg-white border border-green-600 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-800 dark:border-green-700 dark:text-white dark:placeholder-gray-400"
                     />
                     <select
                         value={sortOption}
                         onChange={(e) => setSortOption(e.target.value)}
-                        className="w-full md:w-56 px-4 py-2 rounded-md bg-black border border-green-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer dark:bg-gray-800 dark:border-green-700"
+                        className="w-full md:w-56 px-4 py-2 rounded-md bg-white border border-green-600 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer dark:bg-gray-800 dark:border-green-700 dark:text-white"
                     >
                         <option value="default">Sort: Default</option>
                         <option value="priceAsc">Price: Low to High</option>
@@ -99,21 +100,21 @@ const AllServices = () => {
                             {displayedServices.map(service => (
                                 <div
                                     key={service._id}
-                                    className="bg-black hover:scale-105 transition-transform duration-300 bg-opacity-60 backdrop-blur-md rounded-lg overflow-hidden border border-green-800 shadow-lg text-white dark:bg-gray-900 dark:border-green-700"
+                                    className="bg-white rounded-lg overflow-hidden border border-green-300 shadow-lg hover:shadow-green-600 transition-transform duration-300 dark:bg-gray-900 dark:border-green-700 dark:text-white"
                                 >
                                     <img
                                         src={service.image}
                                         alt={service.title}
-                                        className="w-full h-48 object-cover border-b border-green-700 dark:border-green-600"
+                                        className="w-full h-48 object-cover border-b border-green-600 dark:border-green-700"
                                     />
                                     <div className="p-5">
-                                        <h2 className="text-xl text-green-300 font-semibold mb-2">{service.title}</h2>
-                                        <div className="flex justify-between text-sm text-green-400 font-medium mb-2">
+                                        <h2 className="text-xl text-green-700 font-semibold mb-2 dark:text-green-400">{service.title}</h2>
+                                        <div className="flex justify-between text-sm text-green-600 font-medium mb-2 dark:text-green-400">
                                             <span>Category: {service.category}</span>
                                             <span>Price: ${service.price}</span>
                                         </div>
                                         {service.company && (
-                                            <p className="text-sm text-gray-400 mb-2">Company: {service.company}</p>
+                                            <p className="text-sm text-gray-600 mb-2 dark:text-gray-400">Company: {service.company}</p>
                                         )}
                                         <Link
                                             to={`/details/${service._id}`}
@@ -142,7 +143,6 @@ const AllServices = () => {
             </div>
             <Footer />
         </div>
-
     );
 };
 

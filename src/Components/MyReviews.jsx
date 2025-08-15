@@ -90,11 +90,11 @@ const MyReviews = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-black via-green-950 to-black text-white flex flex-col dark:from-gray-900 dark:via-gray-900 dark:to-black dark:text-white">
+        <div className="min-h-screen bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 flex flex-col dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
             <Navbar />
 
             <div className="flex-grow px-4 py-16 max-w-5xl mx-auto roboto">
-                <h1 className="text-4xl font-bold text-center text-green-400 mb-8 mt-5 dark:text-white">My Reviews</h1>
+                <h1 className="text-4xl font-bold text-center text-green-700 mb-8 mt-5 dark:text-white">My Reviews</h1>
 
                 {myReviews.length === 0 ? (
                     <Loader />
@@ -103,29 +103,29 @@ const MyReviews = () => {
                         {myReviews.map(review => (
                             <div
                                 key={review._id}
-                                className="bg-black hover:scale-105 transition-transform duration-300 bg-opacity-50 rounded-md p-5 border border-green-800 shadow-md dark:bg-gray-900/70 dark:border-green-700"
+                                className="bg-white bg-opacity-80 hover:scale-105 transition-transform duration-300 rounded-md p-5 border border-green-300 shadow-md dark:bg-gray-900/70 dark:border-green-700"
                             >
-                                <div className="mb-2 text-green-300 font-bold text-lg">
+                                <div className="mb-2 text-green-700 font-bold text-lg dark:text-green-400">
                                     {serviceTitles[review.serviceId] || 'Title...'}
                                 </div>
                                 <div className="mb-2 flex items-center gap-2">
-                                    <span className="text-yellow-400 font-semibold">Rating:</span>
+                                    <span className="text-yellow-500 font-semibold">Rating:</span>
                                     <Rating
                                         initialRating={review.rating}
                                         readonly
                                         emptySymbol={<span className="text-xl">☆</span>}
                                         fullSymbol={<span className="text-xl text-yellow-400">★</span>}
                                     />
-                                    <span className="text-green-200 text-sm">{review.rating}</span>
+                                    <span className="text-green-600 text-sm dark:text-green-300">{review.rating}</span>
                                 </div>
                                 <div className="mb-4">
-                                    <span className="text-green-400 font-semibold">Review:</span>
-                                    <p className="text-gray-300">{review.text}</p>
+                                    <span className="text-green-700 font-semibold dark:text-green-400">Review:</span>
+                                    <p className="text-gray-700 dark:text-gray-300">{review.text}</p>
                                 </div>
                                 <div className="flex gap-2">
                                     <button
                                         onClick={() => setEditingReview(review)}
-                                        className="btn px-4 py-1 bg-yellow-500 hover:bg-yellow-600 rounded-full text-sm text-white"
+                                        className="btn px-4 py-1 bg-yellow-500 hover:bg-yellow-600 rounded-full text-sm text-white shadow-md"
                                     >
                                         Update
                                     </button>
@@ -134,7 +134,7 @@ const MyReviews = () => {
                                             setDeleteId(review._id);
                                             setShowDeleteModal(true);
                                         }}
-                                        className="btn px-4 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm text-white"
+                                        className="btn px-4 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm text-white shadow-md"
                                     >
                                         Delete
                                     </button>
@@ -147,16 +147,16 @@ const MyReviews = () => {
 
             {/* Update Modal */}
             {editingReview && (
-                <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
-                    <form onSubmit={handleUpdate} className="bg-gray-900 p-6 rounded-lg w-full max-w-md dark:bg-gray-900">
-                        <h3 className="text-xl font-bold text-green-300 mb-4">Update Review</h3>
+                <div className="fixed inset-0 flex justify-center items-center z-50 px-4 bg-opacity-80 dark:bg-opacity-70">
+                    <form onSubmit={handleUpdate} className="bg-white rounded-lg w-full max-w-md p-6 shadow-2xl dark:bg-gray-900">
+                        <h3 className="text-xl font-bold text-green-700 mb-4 dark:text-green-300">Update Review</h3>
 
                         <textarea
                             name="text"
                             defaultValue={editingReview.text}
                             required
                             rows="3"
-                            className="w-full mb-3 px-3 py-2 rounded-md bg-black border border-green-600 text-white dark:bg-gray-900 dark:border-green-700"
+                            className="w-full mb-3 px-3 py-2 rounded-md bg-gray-100 border border-green-600 text-gray-900 dark:bg-gray-800 dark:border-green-700 dark:text-white"
                         />
                         <input
                             name="rating"
@@ -166,11 +166,11 @@ const MyReviews = () => {
                             max="5"
                             defaultValue={editingReview.rating}
                             required
-                            className="w-full mb-4 px-3 py-2 rounded-md bg-black border border-green-600 text-white dark:bg-gray-900 dark:border-green-700"
+                            className="w-full mb-4 px-3 py-2 rounded-md bg-gray-100 border border-green-600 text-gray-900 dark:bg-gray-800 dark:border-green-700 dark:text-white"
                         />
                         <div className="flex justify-end gap-2">
-                            <button type="button" onClick={() => setEditingReview(null)} className="btn px-4 py-2 bg-red-600 text-white rounded-md">Cancel</button>
-                            <button type="submit" className="btn px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-500">Save</button>
+                            <button type="button" onClick={() => setEditingReview(null)} className="btn px-4 py-2 bg-red-600 text-white rounded-md shadow-md">Cancel</button>
+                            <button type="submit" className="btn px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-500 shadow-md">Save</button>
                         </div>
                     </form>
                 </div>
@@ -178,12 +178,12 @@ const MyReviews = () => {
 
             {/* Delete Modal */}
             {showDeleteModal && (
-                <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
-                    <div className="bg-gray-900 p-6 rounded-lg w-full max-w-md dark:bg-gray-900">
-                        <h3 className="text-lg text-red-400 font-semibold mb-4">Confirm Deletion?</h3>
+                <div className="fixed inset-0 flex justify-center items-center z-50 px-4  bg-opacity-80 dark:bg-opacity-70">
+                    <div className="bg-white rounded-lg w-full max-w-md p-6 shadow-2xl dark:bg-gray-900">
+                        <h3 className="text-lg text-red-600 font-semibold mb-4 dark:text-red-400">Confirm Deletion?</h3>
                         <div className="flex justify-end gap-3">
-                            <button onClick={() => setShowDeleteModal(false)} className="btn px-4 py-2 border border-gray-500 text-black dark:bg-gray-900">Cancel</button>
-                            <button onClick={confirmDelete} className="btn px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-500">Delete</button>
+                            <button onClick={() => setShowDeleteModal(false)} className="btn px-4 py-2 border border-gray-500 text-gray-900 dark:bg-gray-800 dark:text-white shadow-md">Cancel</button>
+                            <button onClick={confirmDelete} className="btn px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-500 shadow-md">Delete</button>
                         </div>
                     </div>
                 </div>
