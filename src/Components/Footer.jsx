@@ -7,7 +7,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 backdrop-blur-sm dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
-      <div className="max-w-7xl roboto mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-50">
+      <div className="max-w-7xl roboto mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 lg:gap-50">
 
         <div>
           <div className="flex items-center gap-2 mb-4">
