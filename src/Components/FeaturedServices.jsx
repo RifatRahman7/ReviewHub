@@ -48,7 +48,7 @@ const FeaturedServices = () => {
         {services.map(service => (
           <div
             key={service._id}
-            className="bg-white/80 dark:bg-gray-900/70 rounded-xl shadow-2xl hover:shadow-green-600 transition p-5 flex flex-col"
+            className="bg-white/80 dark:bg-gray-900/70 rounded-xl shadow-2xl hover:shadow-green-600 transition p-5 flex flex-col hover:scale-105 duration-200"
           >
             <img
               src={service.image}
