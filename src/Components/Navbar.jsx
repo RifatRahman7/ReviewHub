@@ -121,7 +121,7 @@ const Navbar = () => {
 
             {/* Mobile dropdown */}
             {isOpen && (
-                <div className="md:hidden roboto bg-white bg-opacity-90 dark:bg-gray-900 dark:bg-opacity-95 text-green-900 dark:text-gray-200 px-4 pt-4 pb-6 space-y-4">
+                <div className=" roboto bg-white bg-opacity-90 dark:bg-gray-900 dark:bg-opacity-95 text-green-900 dark:text-gray-200 px-4 pt-4 pb-6 space-y-4">
                     {navLinks.map(link => (
                         <Link
                             key={link.name}
