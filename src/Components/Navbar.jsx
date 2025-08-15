@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { Menu, X } from 'lucide-react';
-import { FiHome, FiList, FiPlusCircle, FiBriefcase, FiStar } from 'react-icons/fi';
+import { FiHome, FiList, FiPlusCircle, FiBriefcase, FiStar, FiBook } from 'react-icons/fi';
 import { AuthContext } from '../Provider/AuthContext';
 import ModeButton from './ModeButton';
 import Swal from 'sweetalert2';
@@ -16,6 +16,7 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/', icon: <FiHome className="inline mr-2 mb-1" /> },
         { name: 'All Services', path: '/services', icon: <FiList className="inline mr-2 mb-1" /> },
+        { name: 'Blog', path: '/blog', icon: <FiBook className="inline mr-2 mb-1" /> },
         { name: 'Add Service', path: '/add-service', icon: <FiPlusCircle className="inline mr-2 mb-1" /> },
         { name: 'My Services', path: '/my-services', icon: <FiBriefcase className="inline mr-2 mb-1" /> },
         { name: 'My Reviews', path: '/my-reviews', icon: <FiStar className="inline mr-2 mb-1" /> },

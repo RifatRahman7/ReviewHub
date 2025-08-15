@@ -10,6 +10,7 @@ import AllServices from "../Components/AllServices";
 import ServiceDetails from "../Components/ServiceDetails";
 import MyServices from "../Components/MyServices";
 import MyReviews from "../Components/MyReviews";
+import Blog from "../Components/Blog";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
              {
                 path: "/services",
                 element: <AllServices />,
+            },
+            {
+                path: "/blog",
+                element: <Blog />,
             },
             {
                  path:"/details/:id",
