@@ -7,7 +7,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-green-100 via-white to-green-100 text-gray-900 backdrop-blur-sm dark:from-gray-900 dark:via-gray-800 dark:to-black dark:text-white">
-      <div className="max-w-7xl roboto mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl roboto mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-50">
 
         <div>
           <div className="flex items-center gap-2 mb-4">
@@ -30,15 +30,6 @@ const Footer = () => {
             <li><a href="/services" className="hover:text-green-600 dark:hover:text-green-400 transition">All Services</a></li>
             <li><a href="/add-service" className="hover:text-green-600 dark:hover:text-green-400 transition">Add Service</a></li>
             <li><a href="/my-reviews" className="hover:text-green-600 dark:hover:text-green-400 transition">My Reviews</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-green-900 dark:text-white font-semibold mb-4">Resources</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="/*" className="hover:text-green-600 dark:hover:text-green-400 transition">Privacy Policy</a></li>
-            <li><a href="/*" className="hover:text-green-600 dark:hover:text-green-400 transition">Terms of Service</a></li>
-            <li><a href="/*" className="hover:text-green-600 dark:hover:text-green-400 transition">Help Center</a></li>
           </ul>
         </div>
 
